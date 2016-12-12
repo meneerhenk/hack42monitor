@@ -11,9 +11,10 @@ class meet(Standard):
         client.subscribe("hack42/sidedoor/doorbell")
         client.subscribe("hack42/brandhok/nooddeur1")
         client.subscribe("hack42/brandhok/nooddeur2")
+
     def on_message(self,client, userdata, msg):
         self.timelast=time.time()
-        self.addline("Mendel "+msg.topic+" "+msg.payload)
+        self.addline("sound: "+msg.topic+" "+msg.payload)
         if msg.payload=="open" and msg.topic=="hack42/sidedoor/monitor/doorsw":
            os.system("mplayer -ao alsa /root/kassa/sounds/intel_inside.mp3 >/dev/null 2>/dev/null")
         if msg.topic=="hack42/sidedoor/doorbell":

@@ -19,7 +19,6 @@ class meet(doorduino):
     def on_connect(self,client, userdata, flags, rc):
         client.subscribe("hack42/state")
     def on_message(self,client, userdata, msg):
-        self.addline("Mendel "+msg.topic+" "+msg.payload)
         if msg.payload=="open" and msg.topic=="hack42/state":
            self.ser.write("O")
            self.ser.write("P")
