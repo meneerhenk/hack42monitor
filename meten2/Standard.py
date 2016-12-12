@@ -90,7 +90,10 @@ class Standard:
              os.chdir(self.tmppath)
          else:
              os.chdir(self.rrdpath)
-         self.on_start()
+         try:
+             self.on_start()
+         except AttributeError:
+             pass
          while not self.stopping:
            if self.caching:
                self.cache_to_storage()
@@ -149,7 +152,10 @@ class Standard:
                   except AttributeError:
                       pass
        if line.startswith("R: Reboot"):
-           self.on_start()
+           try:
+               self.on_start()
+           except AttributeError:
+               pass
        if line.startswith("I: "):
           s=line.split(" ")
           if len(s)>5 and s[1]=="state":
