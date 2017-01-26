@@ -168,11 +168,6 @@ try:
       paintports()
       screen.touchwin()
       screen.refresh()
-    elif x==ord('z'):
-      if x in enableports:
-        del enableports[enableports.index(x)]
-      else:
-        enableports.append(x)
     elif x<127 and x>0:
       if myobjs[activeport].ser:
         myobjs[activeport].ser.write(chr(x))

@@ -151,7 +151,7 @@ class Standard:
                       self.docalc()
                   except AttributeError:
                       pass
-       if line.startswith("R: Reboot"):
+       if line.startswith("R: Reboot") or line.startswith("S: Reboot"):
            try:
                self.on_start()
            except AttributeError:
